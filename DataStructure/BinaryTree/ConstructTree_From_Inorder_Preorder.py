@@ -36,11 +36,12 @@ class Solution:
         if len(in_order_left_part) == 0:
             pre_order_left_part = []
         else:
-            for idx in reversed(range(1, len(in_order))):
-                if set(pre_order[1:idx + 1]) == set(in_order_left_part):
-                    pre_order_left_end = idx
-                    break
-            pre_order_left_part = pre_order[1:pre_order_left_end + 1]
+            # for idx in reversed(range(1, len(in_order))):
+            #     if set(pre_order[1:idx + 1]) == set(in_order_left_part):
+            #         pre_order_left_end = idx
+            #         break
+            # pre_order_left_part = pre_order[1:pre_order_left_end + 1]
+            pre_order_left_part = pre_order[1:len(in_order_left_part) + 1]
         pre_order_right_part_first_index = len(pre_order_left_part) + 1
         pre_order_right_part = pre_order[pre_order_right_part_first_index:]
 
