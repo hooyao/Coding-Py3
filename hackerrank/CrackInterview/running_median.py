@@ -1,13 +1,11 @@
-input = [1,
-         2,
-         3,
+import heapq
+
+input = [12,
          4,
          5,
-         6,
-         7,
+         3,
          8,
-         9,
-         10]
+         7]
 
 n = len(input)
 a = []
@@ -17,25 +15,33 @@ for a_i in range(n):
     a.append(a_t)
 print(a)
 
-odd_mid = 0
-even_left = 0
-even_right = 1
-median = []
+mid = 0
+left_max_heap = []
+right_min_heap = []
 for idx in range(len(a)):
     ele = a[idx]
     if idx == 0:
-        odd_mid = 0
-        print('{0:.1f}'.format(a[odd_mid]))
+        mid = ele
+        print('{0:.1f}'.format(mid))
     elif idx == 1:
-        even_left = 0
-        even_right = 1
-        print('{0:.1f}'.format((a[even_left] + a[even_right]) / 2))
+        mid = (a[0] + a[1]) / 2
+        heapq.heappush(left_max_heap, -min(a[0], a[1]))
+        heapq.heappush(right_min_heap, max(a[0], a[1]))
+        print('{0:.1f}'.format(mid))
     elif idx % 2 == 0:  # odd
-        if ele < a[odd_mid]:
-            mid_odd = even_left
-        elif a[even_left] < ele < a[even_right]:
-            mid_odd = [mid_even[0], ele, mid_even[1]]
+        if a[idx] > mid:
+            heapq.heappush(right_min_heap, a[idx])
+            mid = heapq.heappop(right_min_heap)
         else:
-            mid_odd = mid_even + [ele]
-        print('{0:.1f}'.format(mid_odd[1]))
+            heapq.heappush(left_max_heap, - a[idx])
+            mid = - heapq.heappop(left_max_heap)
+        print('{0:.1f}'.format(mid))
     else:
+        if a[idx] > mid:
+            heapq.heappush(left_max_heap, -mid)
+            heapq.heappush(right_min_heap, a[idx])
+        else:
+            heapq.heappush(right_min_heap, mid)
+            heapq.heappush(left_max_heap, -a[idx])
+        mid = (-left_max_heap[0] + right_min_heap[0]) / 2
+        print('{0:.1f}'.format(mid))
