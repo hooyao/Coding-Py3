@@ -24,6 +24,8 @@ class Solution:
         for i in range(1, len(nums)):
             current_sum = max(current_sum + nums[i], nums[i])
             largest = max(largest, current_sum)
+            print(str(current_sum)+":"+str(largest))
+
         return largest
 
 
