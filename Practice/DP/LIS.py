@@ -9,7 +9,7 @@ class Solution:
         """
         if len(nums) <= 1:
             return len(nums)
-        dp = [1] * len(nums)
+        dp = [1] * len(nums)  # the len of lis end with nums[i]
         for i in range(1, len(nums)):
             for j in range(0, i):
                 if nums[i] > nums[j]:
@@ -51,7 +51,7 @@ def main(*args):
     b = [10, 9, 2, 5, 3, 7, 101, 18]
     solution = Solution()
     c = [1]
-    result = solution.lenthOfLIS_bsearch(a)
+    result = solution.lengthOfLIS(a)
     # result = solution.bsearch(c, 2)
     print(result)
 
