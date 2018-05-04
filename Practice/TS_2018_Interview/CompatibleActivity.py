@@ -54,7 +54,7 @@ class Solution:
         for i in range(len(time_points)):
             for j in reversed(range(i + 1)):
                 start = time_points[j]
-                end = time_points[i]
+                end = [i]
                 tmp_a = Activity(start, end)
                 if start == end:
                     dp[j][i] = 0
