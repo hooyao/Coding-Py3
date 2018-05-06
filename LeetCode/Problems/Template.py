@@ -7,7 +7,7 @@ class Solution:
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        
+
 
 def main(*args):
     solution = Solution()
