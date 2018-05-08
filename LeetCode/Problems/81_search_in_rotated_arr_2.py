@@ -1,6 +1,7 @@
 import sys
 
 
+# TODO can be optimized using iterative
 class Solution:
     def search(self, nums, target):
         """
