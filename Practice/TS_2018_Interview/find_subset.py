@@ -12,7 +12,21 @@ def findAllSubset(nums):
     return results
 
 
-a = [1, 2, 3]
+def findAllSubset_bit(nums):
+    length = len(nums)
+    L = 1 << length  # 2 ^ len
+    result = []
+    for i in range(L):
+        temp = []
+        for j in range(length):
+            if (i & (1 << j)) != 0:
+                temp.append(nums[j])
+        result.append(temp)
+    return result
 
-result = findAllSubset(a)
+
+a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+
+result = findAllSubset_bit(a)
+print(len(result))
 print(result)
