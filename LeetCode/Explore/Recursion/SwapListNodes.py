@@ -1,10 +1,10 @@
 #!/usr/bin/env python  
 """ 
-@author:shz 
+@author:hooyao
 @license: Apache Licence 
 @file: SwapListNodes.py 
 @time: 2019/03/25
-@contact: sunhouzan@163.com
+@contact:  hooyao@gmail.com
 @site:  
 @software: PyCharm
 
