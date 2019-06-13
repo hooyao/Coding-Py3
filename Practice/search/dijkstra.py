@@ -33,12 +33,24 @@ class Graph:
     vertex_count: int
 
 
+class PriorityQueue:
+    heap = []
+    heap_dict = {}
+
+    def push(self, node_idx: int, weight: int):
+        heapq.heappush(self.heap, (weight, node_idx))
+
+    def pop(self):
+        heapq.heappop(self.heap)
+
+
 class Dijkstra:
 
     def search(self, graph: Graph, from_id: int, to_id: int):
         distance = {}
         priority_queue = []
         inqueue = {}
+        predecessor = [-1 for _i in range(graph.vertex_count)]
         for i in range(graph.vertex_count):
             distance[i] = sys.maxsize
             inqueue[i] = False
@@ -52,6 +64,7 @@ class Dijkstra:
             for edge in graph.adj[min_vertex_id]:
                 if edge.weight + min_distance < distance[edge.to_id]:
                     distance[edge.to_id] = edge.weight + min_distance
+                    predecessor[edge.to_id] = min_vertex_id
                     if inqueue[edge.to_id]:
                         # update priority_queue
                         for idx, item in enumerate(priority_queue):
@@ -62,7 +75,7 @@ class Dijkstra:
                     else:
                         heapq.heappush(priority_queue, (distance[edge.to_id], edge.to_id))
                         inqueue[edge.to_id] = True
-        return distance[to_id]
+        return distance[to_id], predecessor
 
 
 def main(*args):
