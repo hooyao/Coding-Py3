@@ -1,5 +1,6 @@
 import random
 import sys
+import time
 
 
 class Solution:
@@ -56,15 +57,18 @@ def main(*args):
     solution = Solution()
     # print(result)
     # arr = random.sample(range(10), 10)
+    t = time.process_time()
     for i in range(1000):
-        arr = list(sorted(random.randrange(2000) for i in range(1234)))
-        result = solution.merge_sort_rec(arr)
+        arr = list(random.randrange(10000) for i in range(random.randrange(400, 600)))
+        solution.merge_sort_rec(arr)
         sorted_arr = sorted(arr)
-        if result != sorted_arr:
+        if arr != sorted_arr:
             print(arr)
             print(sorted_arr)
             print("error")
             break
+    eclapsed = time.process_time() - t
+    print(eclapsed)
     # result = solution.merge_rec([1,3,4,6,2,3,4,8],0,4,4)
     # print(result)
 
