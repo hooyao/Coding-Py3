@@ -1,0 +1,19 @@
+version: '3'
+services:
+  code-server-python:
+    container_name: code-server-python
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: code-server-python:v1
+    security_opt: ['seccomp:unconfined']
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    mem_limit: 3g
+    volumes:
+      - ${HOME}/.local/share/code-server:/home/coder/.local/share/code-server
+      - ${HOME}/python-projects:/home/coder/project
+    ports:
+      - "8080:8080"
