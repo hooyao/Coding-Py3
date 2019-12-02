@@ -10,6 +10,9 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    def __repr__(self):
+        return str(self.val)
+
 # Definition for binary tree with next pointer.
 class TreeLinkNode:
     def __init__(self, x):

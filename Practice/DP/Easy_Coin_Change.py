@@ -34,7 +34,7 @@ class Solution(object):
                     tmp = list(d[i - coin])
                     if tmp[-1] >= 0:  # has solution
                         tmp[idx] += 1
-                        tmp[-1] = sum(tmp[0:-1])
+                        tmp[-1] += 1
                         if d[i][-1] < 0 or d[i][-1] > tmp[-1]:
                             d[i] = tmp
         return d[amount]
@@ -66,7 +66,7 @@ def main(*args):
     coins4 = [461, 307, 4, 97, 352, 446, 479, 243]
     amount4 = 7265
     solution = Solution()
-    result = solution.coinChange(coins4, amount4)
+    result = solution.changeCoin_dp(coins4, amount4)
     print(result)
 
 
