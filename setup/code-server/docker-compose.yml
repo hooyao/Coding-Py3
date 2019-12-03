@@ -21,7 +21,7 @@ services:
         limits:
           memory: 2G
     volumes:
-      - ${HOME}/.local/share/code-server:/home/coder/.local/share/code-server
-      - ${HOME}/python-projects:/home/coder/project
+      - ${HOME}/.local/share/code-server:/root/.local/share/code-server
+      - ${HOME}/python-projects:/root/project
     ports:
       - "8080:8080"
