@@ -7,11 +7,19 @@ services:
       dockerfile: Dockerfile
     image: code-server-python:v1
     security_opt: ['seccomp:unconfined']
+    environment: 
+      - PASSWORD=123
+      - SERVICE_URL=https://marketplace.visualstudio.com/_apis/public/gallery/
+      - ITEM_URL=https://marketplace.visualstudio.com/items
     ulimits:
       memlock:
         soft: -1
         hard: -1
-    mem_limit: 3g
+    command: --proxy-server=socks5://192.168.1.8:1080
+    deploy:
+      resources:
+        limits:
+          memory: 2G
     volumes:
       - ${HOME}/.local/share/code-server:/home/coder/.local/share/code-server
       - ${HOME}/python-projects:/home/coder/project
