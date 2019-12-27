@@ -3,7 +3,7 @@ services:
   code-server-python:
     container_name: code-server-python
     build:
-      context: ./
+      context: ..
       dockerfile: Dockerfile
     image: code-server-python:v1
     security_opt: ['seccomp:unconfined']

@@ -1,0 +1,26 @@
+version: '3'
+services:
+  code-server-java:
+    container_name: code-server-java
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: code-server-java:v1
+    security_opt: ['seccomp:unconfined']
+    environment: 
+      - PASSWORD=123
+      - SERVICE_URL=https://marketplace.visualstudio.com/_apis/public/gallery/
+      - ITEM_URL=https://marketplace.visualstudio.com/items
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+    volumes:
+      - ${HOME}/.local/share/code-server:/home/coder/.local/share/code-server
+      - ${HOME}/java-projects:/home/coder/project
+    ports:
+      - "8080:8080"
